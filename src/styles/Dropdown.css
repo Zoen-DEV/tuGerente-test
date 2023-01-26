@@ -110,3 +110,18 @@
     transform: scale(1.1);
     color: #0d9488;
 }
+
+@media screen and (max-width: 720px) {
+    .dropdown{
+        width: 100vw;
+    }
+    .input_container{
+        width: 100%;
+    }
+    .input_container input{
+        width: 90%;
+    }
+    .dropdown ul{
+        width: 90%;
+    }
+}

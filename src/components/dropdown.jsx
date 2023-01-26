@@ -3,7 +3,13 @@ import "../styles/Dropdown.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { BiUpArrow } from "react-icons/bi";
 
-const Dropdown = ({ setDisplayForm, data, filter, setFilter, handleScroll }) => {
+const Dropdown = ({
+  setDisplayForm,
+  data,
+  filter,
+  setFilter,
+  handleScroll,
+}) => {
   const [focus, setFocus] = useState(false);
 
   const handleChange = (e) => {
@@ -18,7 +24,12 @@ const Dropdown = ({ setDisplayForm, data, filter, setFilter, handleScroll }) => 
           onChange={handleChange}
           value={filter}
           onFocus={() => setFocus(true)}
-          placeholder="Ingrese el nombre del cliente para filtrar"
+          onBlur={() => {
+            setTimeout(() => {
+              setFocus(false);
+            }, 110);
+          }}
+          placeholder="Ingrese el nombre del cliente para filtrar la lista"
           style={{
             paddingBottom: focus ? "10px" : "",
             borderRadius: !focus ? "3px" : "",
@@ -47,13 +58,13 @@ const Dropdown = ({ setDisplayForm, data, filter, setFilter, handleScroll }) => 
           <></>
         )}
       </ul>
-      <button
+      {/* <button
         onClick={() => setFocus(false)}
         className="close_dropdown"
         style={{ display: !focus ? "none" : "" }}
       >
         <BiUpArrow />
-      </button>
+      </button> */}
     </div>
   );
 };

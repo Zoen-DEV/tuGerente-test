@@ -68,3 +68,9 @@
     border-color: #0d9488;
     letter-spacing: 1px;
 }
+
+@media screen and (max-width: 720px) {
+  .form_section{
+    width: 90vw;
+  }
+}
