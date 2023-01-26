@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Prueba tecnica para el proceso de seleccion de tuGerente
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
