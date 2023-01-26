@@ -2,67 +2,32 @@
 
 ## Este consiste en un componente estilo dropdown desarrollado en React.js con Firebase
 
-In the project directory, you can run:
+### Al abrir la app se muestra lo siguiente:
 
-### `npm start`
+![primera vista](https://res.cloudinary.com/ddabnwlfi/image/upload/v1674752018/tuGerenteTest/1_-_componente_al_iniciar_la_app_dedvpt.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Al hacer foco (click) en el input se despliega el boton de creacion de nuevos clientes y se despliega la primer pagina de 20 items
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+cuando se hace scroll hasta el ultimo item se muestra la siguiente pagina de 20 items hasta que ya no encuentre 'clientes' en la base de datos
 
-### `npm test`
+![segunda vista](https://res.cloudinary.com/ddabnwlfi/image/upload/v1674752018/tuGerenteTest/2_-_despliege_y_primeras_20_paginas_jzksed.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Si se escriben letras en el input este filtrara por nombre
 
-### `npm run build`
+![filtro por nombre](https://res.cloudinary.com/ddabnwlfi/image/upload/v1674752018/tuGerenteTest/3_-_filtro_por_nombre_o2yy1b.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### En el caso de que se escriban numeros se filtra por nit
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![filtro por nit](https://res.cloudinary.com/ddabnwlfi/image/upload/v1674752018/tuGerenteTest/4_-_filtro_por_nit_rqvvu8.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### y por ultimo si se empieza escribiendo un signo + filtrara por telefono (esto sirve a su vez para filtrar por pais, con el codigo de area)
 
-### `npm run eject`
+![filtro por telefono](https://res.cloudinary.com/ddabnwlfi/image/upload/v1674752018/tuGerenteTest/5_-_filtro_por_telefono_ddj9to.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Cuando se hace click en el boton de 'Agregar cliente' se abre un popup con un formulario que guarda el estado del filtro, permite modificarlo y agregar el resto de campos para crear un nuevo cliente en la base de datos
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+este guarda el estado del nombre, nit o telefono. dependiendo de que tipo de filtro este usando el usuario
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![onclick en Agregar cliente](https://res.cloudinary.com/ddabnwlfi/image/upload/v1674752018/tuGerenteTest/6_-_onclick_en_la_primer_opcion_majrbg.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![formulario](https://res.cloudinary.com/ddabnwlfi/image/upload/v1674752018/tuGerenteTest/7_-_popup_de_creacion_de_nuevo_cliente_uthund.png)
