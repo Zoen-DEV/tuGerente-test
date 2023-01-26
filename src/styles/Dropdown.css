@@ -67,7 +67,7 @@
 }
 
 .add:hover .add_icon{
-    color: #0d9488;
+    color: rgb(13, 150, 139);
     transform: scale(1.1);
 }
 

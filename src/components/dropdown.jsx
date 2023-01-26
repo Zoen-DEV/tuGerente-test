@@ -2,17 +2,9 @@ import React, { useState } from "react";
 import "../styles/Dropdown.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { BiUpArrow } from "react-icons/bi";
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
-const pagination = (page, data) => {
-  const start = (page - 1) * 20;
-  const end = start + 20;
-  return data.slice(start, end);
-};
-
-const Dropdown = ({ setDisplayForm, data, filter, setFilter }) => {
+const Dropdown = ({ setDisplayForm, data, filter, setFilter, handleScroll }) => {
   const [focus, setFocus] = useState(false);
-  const [page, setPage] = useState(1);
 
   const handleChange = (e) => {
     setFilter(e.target.value);
@@ -33,7 +25,7 @@ const Dropdown = ({ setDisplayForm, data, filter, setFilter }) => {
           }}
         />
       </div>
-      <ul style={{ height: focus ? "300px" : "auto" }}>
+      <ul style={{ height: focus ? "300px" : "auto" }} onScroll={handleScroll}>
         {focus ? (
           <>
             <li
@@ -45,34 +37,7 @@ const Dropdown = ({ setDisplayForm, data, filter, setFilter }) => {
             >
               Agregar cliente <AiOutlinePlusCircle className="add_icon" />
             </li>
-            {data.length > 20 ? (
-              <li className="pagination_controller">
-                <button
-                  onClick={() => {
-                    if (page > 1) {
-                      setPage(page - 1);
-                    }
-                  }}
-                >
-                  <FaArrowAltCircleLeft />
-                </button>
-                <span>
-                  {page} / {Math.ceil(data.length / 20)}
-                </span>
-                <button
-                  onClick={() => {
-                    if (page < Math.ceil(data.length / 20)) {
-                      setPage(page + 1);
-                    }
-                  }}
-                >
-                  <FaArrowAltCircleRight />
-                </button>
-              </li>
-            ) : (
-              <></>
-            )}
-            {pagination(page, data).map(({ name }, index) => (
+            {data.map(({ name }, index) => (
               <li key={index} className="dropdown_options">
                 {name}
               </li>
