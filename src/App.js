@@ -12,20 +12,48 @@ import {
   startAfter,
 } from "firebase/firestore";
 
+// Esta funcion es para definir el tipo de filtro que se va a hacer
+const filterType = (filter) => {
+  return /^[0-9]+$/.test(filter[0])
+    ? "nit"
+    : filter[0] === "+"
+    ? "telefono"
+    : "name";
+};
+
+// En el caso de que el filtro sea por nombre pasa la primer letra del string a Mayuscula y el resto a minuscula
+const toUpperCaseFirstLetter = (filter, filterType) => {
+  if (filterType === "name") {
+    const firstLetter = filter.charAt(0).toUpperCase();
+    const string = filter.slice(1).toLowerCase();
+    return `${firstLetter}${string}`;
+  }
+  return filter;
+};
+
 function App() {
   const [displayForm, setDisplayForm] = useState(false);
   const [filter, setFilter] = useState("");
   const [data, setData] = useState([]);
   const [lastItem, setLastItem] = useState();
 
+  // Esta funcion hace la primer llamada a la base de datos de firebase y devuelve la primer pagina de 20 items
   const getClients = async () => {
     const clientRef = collection(db, "client");
     const queryRef =
       filter.length > 0
         ? query(
             clientRef,
-            where("name", ">=", filter),
-            where("name", "<", filter + "\uf8ff"),
+            where(
+              filterType(filter),
+              ">=",
+              toUpperCaseFirstLetter(filter, filterType(filter))
+            ),
+            where(
+              filterType(filter),
+              "<",
+              toUpperCaseFirstLetter(filter, filterType(filter)) + "\uf8ff"
+            ),
             limit(20)
           )
         : query(clientRef, limit(20));
@@ -38,6 +66,7 @@ function App() {
     );
   };
 
+  // Esta funcion hace la peticion a la base de datos de firebase desde la pagina 2 en adelante
   const getMorePages = async () => {
     const clientRef = collection(db, "client");
     const queryRef =
@@ -45,8 +74,16 @@ function App() {
         ? query(
             clientRef,
             startAfter(lastItem),
-            where("name", ">=", filter),
-            where("name", "<", filter + "\uf8ff"),
+            where(
+              filterType(filter),
+              ">=",
+              toUpperCaseFirstLetter(filter, filterType(filter))
+            ),
+            where(
+              filterType(filter),
+              "<",
+              toUpperCaseFirstLetter(filter, filterType(filter)) + "\uf8ff"
+            ),
             limit(20)
           )
         : query(clientRef, startAfter(lastItem), limit(20));
@@ -60,6 +97,7 @@ function App() {
     }
   };
 
+  // Esta funcion llama la funcion 'getMorePages' cuando el scroll baja hasta el ultimo elemento
   const handleScroll = (e) => {
     const container = e.target;
     if (
@@ -70,6 +108,7 @@ function App() {
     }
   };
 
+  // Este es un useEffect que se ejecuta cada vez que el filtro cambia
   useEffect(() => {
     getClients();
   }, [filter]);

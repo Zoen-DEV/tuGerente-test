@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Dropdown.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { BiUpArrow } from "react-icons/bi";
 
 const Dropdown = ({
   setDisplayForm,
@@ -29,7 +28,7 @@ const Dropdown = ({
               setFocus(false);
             }, 110);
           }}
-          placeholder="Ingrese el nombre del cliente para filtrar la lista"
+          placeholder="Ingrese el nombre/nit/telefono del cliente"
           style={{
             paddingBottom: focus ? "10px" : "",
             borderRadius: !focus ? "3px" : "",
