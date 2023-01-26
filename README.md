@@ -1,8 +1,6 @@
 # Prueba tecnica para el proceso de seleccion de tuGerente
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
+## Este consiste en un componente estilo dropdown desarrollado en React.js con Firebase
 
 In the project directory, you can run:
 
