@@ -55,7 +55,9 @@ function App() {
       ...data,
       ...result.docs.map((doc) => ({ ...doc.data(), id: doc.id })),
     ]);
-    setLastItem(result.docs[result.docs.length - 1]);
+    if (result.docs[result.docs.length - 1]) {
+      setLastItem(result.docs[result.docs.length - 1]);
+    }
   };
 
   const handleScroll = (e) => {
