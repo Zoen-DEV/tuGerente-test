@@ -130,7 +130,7 @@ function App() {
           setDisplayForm={setDisplayForm}
           getClients={getClients}
           filter={filter}
-          setFilter={setFilter}
+          filterType={filterType}
         />
       </div>
     </div>

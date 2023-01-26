@@ -5,7 +5,7 @@ import { db } from "../firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 import Swal from "sweetalert2";
 
-const Form = ({ displayForm, setDisplayForm, getClients, filter, setFilter }) => {
+const Form = ({ displayForm, setDisplayForm, getClients, filter, filterType }) => {
   const initialState = {
     name: "",
     razonSocial: "",
@@ -18,7 +18,7 @@ const Form = ({ displayForm, setDisplayForm, getClients, filter, setFilter }) =>
   useEffect(() => {
     setData({
       ...initialState,
-      name: filter,
+      [filterType(filter)]: filter
     });
   }, [filter]);
 
@@ -61,7 +61,6 @@ const Form = ({ displayForm, setDisplayForm, getClients, filter, setFilter }) =>
       try {
         addDoc(collection(db, "client"), data);
         setData(initialState);
-        // setFilter('')
         getClients();
         setDisplayForm(false);
       } catch (error) {
