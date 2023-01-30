@@ -1,5 +1,7 @@
 # Prueba tecnica para el proceso de seleccion de tuGerente
 
+<a href= "https://hub.docker.com/r/zoendev/tu-gerente-test">Docker hub link</a>
+
 ## Este consiste en un componente estilo dropdown desarrollado en React.js con Firebase
 
 ### Al abrir la app se muestra lo siguiente:
