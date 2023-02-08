@@ -9,8 +9,10 @@ const Dropdown = ({
   setFilter,
   handleScroll,
 }) => {
+  // Este es un estado que cambia cuando se hace foco o se quita el foco del input, para mostrar u ocultar las opciones
   const [focus, setFocus] = useState(false);
 
+  // Esta funcion se encarga de manejar el evento onChange de el filtro
   const handleChange = (e) => {
     setFilter(e.target.value);
   };

@@ -6,6 +6,8 @@ import { addDoc, collection } from "firebase/firestore";
 import Swal from "sweetalert2";
 
 const Form = ({ displayForm, setDisplayForm, getClients, filter, filterType }) => {
+
+  // Initial state del formulario
   const initialState = {
     name: "",
     razonSocial: "",
@@ -13,8 +15,10 @@ const Form = ({ displayForm, setDisplayForm, getClients, filter, filterType }) =
     telefono: "",
     codigo: "",
   };
+  // Estado del formulario
   const [data, setData] = useState(initialState);
 
+  // Este useEffect hace que se agrege el filtro al respectivo input que le corresponda (name / nit / telefono) se ejecuta cuando se renderiza el componente y cuando cambia el filtro.
   useEffect(() => {
     setData({
       ...initialState,
@@ -22,6 +26,7 @@ const Form = ({ displayForm, setDisplayForm, getClients, filter, filterType }) =
     });
   }, [filter]);
 
+  // Esta funcion se encarga de manejar los cambios de los inputs
   const handleChange = (e) => {
     setData({
       ...data,
@@ -29,6 +34,7 @@ const Form = ({ displayForm, setDisplayForm, getClients, filter, filterType }) =
     });
   };
 
+  // Esta es la funcion que se encarga del submit pero antes valida los datos
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -58,6 +64,7 @@ const Form = ({ displayForm, setDisplayForm, getClients, filter, filterType }) =
     ) {
       Swal.fire("El telefono debe ser un numero de telefono valido");
     } else {
+      // Si todos los datos son correctos se hace un post al firestore, se reinicia el formulario, se vuelve a traer los primero 20 clientes y se cierra el popup del formulario
       try {
         addDoc(collection(db, "client"), data);
         setData(initialState);
